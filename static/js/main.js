@@ -220,25 +220,25 @@ document.addEventListener("DOMContentLoaded", function () {
       requestAnimationFrame(gameLoop);
     }
   }
+
+  // End Game
+  function endGame() {
+    gameIsOn = false;
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+
+    // Configure it: POST-request for the /result route
+    xhr.open("POST", "/result", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    // Callback function when the state changes
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        // Update the window with the result.html content
+        document.body.innerHTML = xhr.responseText;
+      }
+    };
+    // Send the request with the 'score' data
+    xhr.send("score=" + score);
+  }
 });
-
-// End Game
-function endGame() {
-  gameIsOn = false;
-  // Create a new XMLHttpRequest object
-  var xhr = new XMLHttpRequest();
-
-  // Configure it: POST-request for the /result route
-  xhr.open("POST", "/result", true);
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-  // Callback function when the state changes
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      // Update the window with the result.html content
-      document.body.innerHTML = xhr.responseText;
-    }
-  };
-  // Send the request with the 'score' data
-  xhr.send("score=" + score);
-}
