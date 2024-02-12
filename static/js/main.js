@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let isRedHit = false;
 
   let isBlockCleared = false;
+  let gameIsOn = true;
 
   let score = 0;
 
@@ -169,6 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
       resetPosition();
       livesDisplay.innerHTML = livesDisplay.innerHTML.slice(0, -1);
       if (livesDisplay.innerHTML == "") {
+        gameIsOn = false;
         // Create a new XMLHttpRequest object
         var xhr = new XMLHttpRequest();
 
@@ -227,6 +229,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Game loop
   function gameLoop() {
     updateBallPosition();
-    requestAnimationFrame(gameLoop);
+    if (gameIsOn) {
+      requestAnimationFrame(gameLoop);
+    }
   }
 });
