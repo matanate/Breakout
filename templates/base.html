@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,9 +18,17 @@
       href="{{ url_for('static', filename='css/style.css') }}"
       rel="stylesheet"
     />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='images/logo.png') }}"
+    />
+
     <title>{% block page_title %}{% endblock %}</title>
   </head>
   <body>
-    {% block body %}{% endblock %}
+    {% include "header.html" %} {% block body %}{% endblock %} {% include
+    "footer.html" %}
   </body>
 </html>

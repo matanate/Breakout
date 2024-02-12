@@ -6,6 +6,16 @@ html {
   align-items: center;
   justify-content: center;
 }
+#score,
+#lives {
+  text-align: center;
+}
+
+#final-score-container {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
 
 #gameCanvas {
   display: block; /* Make canvas a block-level element */
@@ -13,7 +23,8 @@ html {
   border: 1px solid #000; /* Add a border for visualization */
   background-color: lightblue; /* Set canvas background color */
   width: 90vw; /* Set canvas width to 100% of viewport width */
-  height: 70vh; /* Set canvas height to 100% of viewport height */
+  height: 60vh;
+  max-width: 100vh; /* Set canvas height to 100% of viewport height */
   padding: 0;
 }
 

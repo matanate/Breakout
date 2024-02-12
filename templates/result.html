@@ -1,5 +1,7 @@
 {% extends "base.html" %} {% block page_title %}Result - Breakout{% endblock %}
 {% block body %}
-<div class="container"></div>
-<div>Your Score is:<span>{{score}}</span></div>
+<div class="container" id="final-score-container">
+  <h2 id="final-score">Your Score is: <span>{{score}}</span></h2>
+  <a class="btn btn-primary" href="{{url_for('home')}}">Restart</a>
+</div>
 {% endblock %}
