@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // For touch events
       event.preventDefault(); // Prevent default behavior to avoid scrolling on touch devices
       const touch = event.touches[0];
-      mouseX = touch.clientX - canvasRect.left;
+      mouseX = touch.pageX - canvasRect.left;
     } else {
       // For mouse events
       mouseX = event.clientX - canvasRect.left;
