@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let isRedHit = false;
 
   let isBlockCleared = false;
+  let isSecondBlocks = false;
   let gameIsOn = true;
 
   let score = 0;
@@ -145,11 +146,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     });
-    if (isBlockCleared) {
+    if (isBlockCleared && isSecondBlocks == false) {
       blocks.forEach((block) => {
         block.style.visibility = "visible";
       });
+      isSecondBlocks = true;
       resetPosition();
+    } else if (isBlockCleared && isSecondBlocks == true) {
+      endGame();
     }
 
     // Check for collision with the canvas boundaries
@@ -170,26 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
       resetPosition();
       livesDisplay.innerHTML = livesDisplay.innerHTML.slice(0, -1);
       if (livesDisplay.innerHTML == "") {
-        gameIsOn = false;
-        // Create a new XMLHttpRequest object
-        var xhr = new XMLHttpRequest();
-
-        // Configure it: POST-request for the /result route
-        xhr.open("POST", "/result", true);
-        xhr.setRequestHeader(
-          "Content-Type",
-          "application/x-www-form-urlencoded"
-        );
-
-        // Callback function when the state changes
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4 && xhr.status === 200) {
-            // Update the window with the result.html content
-            document.body.innerHTML = xhr.responseText;
-          }
-        };
-        // Send the request with the 'score' data
-        xhr.send("score=" + score);
+        endGame();
       }
     }
     // Check for collision with the paddle
@@ -234,3 +219,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+// End Game
+function endGame() {
+  gameIsOn = false;
+  // Create a new XMLHttpRequest object
+  var xhr = new XMLHttpRequest();
+
+  // Configure it: POST-request for the /result route
+  xhr.open("POST", "/result", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+  // Callback function when the state changes
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      // Update the window with the result.html content
+      document.body.innerHTML = xhr.responseText;
+    }
+  };
+  // Send the request with the 'score' data
+  xhr.send("score=" + score);
+}
