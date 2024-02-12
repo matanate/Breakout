@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block page_title %}Breakout{% endblock %} {% block
+body %}
+<div class="container-fluid canvasContainer">
+  <div id="score">Score:<span>0</span></div>
+  <div id="lives">Lives:<span>❤❤❤</span></div>
+  <div id="gameCanvas">
+    <div id="breakout-blocks">
+      {% for i in range(8) %}
+      <div id="block-row-{{i+1}}">
+        {% set numbers = [] %} {% set remaining_sum = 100 %} {% for _ in
+        range(10) %} {% set random_number = range(5, remaining_sum)|random %} {%
+        set _ = numbers.append(random_number) %} {% set remaining_sum =
+        remaining_sum - random_number %} {% endfor %} {# The last number ensures
+        the sum is exactly 100 #} {% set _ = numbers.append(remaining_sum) %} {%
+        for i in numbers %}
+        <div class="block" style="width: {{i}}%;"></div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+    <div id="breakout-ball" style="left: 50%; top: 50%"></div>
+    <div id="breakout-paddle" style="left: 50%; top: 90%; width: 30%"></div>
+  </div>
+</div>
+<script src="{{url_for('static', filename='js/main.js')}}"></script>
+{% endblock %}
