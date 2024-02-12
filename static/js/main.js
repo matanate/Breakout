@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
   resetPosition();
   // Event listener for mouse movement within the paddle's container
   paddle.parentElement.addEventListener("mousemove", updatePaddlePosition);
-  paddle.parentElement.addEventListener("click", resetPosition);
 
   // Start the game loop
   gameLoop();
