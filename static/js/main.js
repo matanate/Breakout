@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Event listener for mouse movement within the paddle's container
   paddle.parentElement.addEventListener("mousemove", updatePaddlePosition);
   paddle.parentElement.addEventListener("touchmove", updatePaddlePosition);
-  
+
   // Start the game loop
   gameLoop();
 
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update paddle position based on mouse movement
   function updatePaddlePosition(event) {
     const canvasRect = paddle.parentElement.getBoundingClientRect();
-    const mouseX
+    let mouseX;
 
     if (event.type === "touchmove") {
       // For touch events
@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       // For mouse events
       mouseX = event.clientX - canvasRect.left;
-      }
-    
+    }
+
     // Calculate the left position so that the center of the paddle aligns with the mouse
     paddleX = mouseX - paddle.clientWidth / 2;
 
