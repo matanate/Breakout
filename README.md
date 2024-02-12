@@ -21,7 +21,13 @@ git clone https://github.com/yourusername/breakout-flask-app.git
 cd breakout-flask-app
 ```
 
-2. Run the Flask application:
+2. Set an environment variable called "FLASK_SECRET_KEY" and set it to your choice.
+
+```bash
+export FLASK_SECRET_KEY="YOUR_FLASK_SECRET_KEY"
+```
+
+3. Run the Flask application:
 
 ```bash
 python app.py
@@ -47,6 +53,11 @@ python app.py
 - Special effects for hitting specific color blocks.
 - Game over when all lives are lost.
 - Score tracking.
+
+## Deployment (Live Demo)
+
+Check out the live demo:
+[Live Demo](https://breakout-cxy3.onrender.com/)
 
 # Acknowledgments
 
