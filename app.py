@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request
+import os
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "kfndjkghdfkjn3nrkjnerijoifn9j49r9rj349otno4i"
+
+app.config["SECRET_KEY"] = os.environ["FLASK_SECRET_KEY"]
 
 
 @app.route("/")
