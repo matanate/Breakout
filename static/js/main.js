@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Get the paddle ball and canvas elements
   const paddle = document.getElementById("breakout-paddle");
   const ball = document.getElementById("breakout-ball");
-  const canvasRect = paddle.parentElement.getBoundingClientRect();
 
   // Store the blocks in an array
   const blocks = document.querySelectorAll(".block");
@@ -24,15 +23,16 @@ document.addEventListener("DOMContentLoaded", function () {
   let ballSpeedX;
   let ballSpeedY;
 
+  // Set game state variables
   let isTopHit = false;
   let paddleHitCount = 0;
   let isOrangeHit = false;
   let isRedHit = false;
-
   let isBlockCleared = false;
   let isSecondBlocks = false;
   let gameIsOn = true;
 
+  // Set the initial score
   let score = 0;
 
   resetPosition();
@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initial setup
   function resetPosition() {
+    const canvasRect = paddle.parentElement.getBoundingClientRect();
     // Set initial paddle and ball positions
     paddleX = canvasRect.right / 2; // Adjust the initial paddle position as needed
     ballX = (canvasRect.right - canvasRect.left + ball.clientWidth) / 3; // Adjust the initial ball position as needed
@@ -70,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Update paddle position based on mouse movement
   function updatePaddlePosition(event) {
+    const canvasRect = paddle.parentElement.getBoundingClientRect();
     const mouseX = event.clientX - canvasRect.left;
 
     // Calculate the left position so that the center of the paddle aligns with the mouse
