@@ -1,0 +1,82 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Hide body overflow to prevent scroll bars */
+  align-items: center;
+  justify-content: center;
+}
+
+#gameCanvas {
+  display: block; /* Make canvas a block-level element */
+  margin: 0 auto; /* Center the canvas horizontally */
+  border: 1px solid #000; /* Add a border for visualization */
+  background-color: lightblue; /* Set canvas background color */
+  width: 90vw; /* Set canvas width to 100% of viewport width */
+  height: 70vh; /* Set canvas height to 100% of viewport height */
+  padding: 0;
+}
+
+#breakout-ball {
+  background-color: #999;
+  border-radius: 14px;
+  -webkit-border-radius: 14px;
+  height: 14px;
+  width: 14px;
+  position: relative;
+}
+
+#breakout-paddle {
+  background-color: #08f;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  height: 15px;
+  position: relative;
+}
+
+#breakout-blocks {
+  height: 5%;
+  width: 100%;
+  position: relative;
+  top: 10%;
+}
+
+#block-row-1,
+#block-row-2,
+#block-row-3,
+#block-row-4,
+#block-row-5,
+#block-row-6,
+#block-row-7,
+#block-row-8 {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  margin: 2px;
+}
+
+.block {
+  height: 100%;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+#block-row-1 .block,
+#block-row-2 .block {
+  background-color: red;
+}
+
+#block-row-3 .block,
+#block-row-4 .block {
+  background-color: orange;
+}
+
+#block-row-5 .block,
+#block-row-6 .block {
+  background-color: green;
+}
+
+#block-row-7 .block,
+#block-row-8 .block {
+  background-color: yellow;
+}
